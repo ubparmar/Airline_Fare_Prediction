@@ -248,5 +248,11 @@ document.ontouchstart = evt => birthday.onClick(evt);
     birthday.update(delta / 1000);
 })();
 </script>
+<script type="text/javascript">
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+        history.go(1);
+    };
+</script>
 </body>
 </html>

@@ -468,7 +468,12 @@
       </footer>
   
     </div>
-   
+    <script type="text/javascript">
+      history.pushState(null, null, location.href);
+      window.onpopstate = function () {
+          history.go(1);
+      };
+  </script>
     <!-- Load jQuery -->
     <script src="{% static 'mainapp/js/jquery-3.3.1.min.js' %}"></script>
     <!-- Load jQuery Migrate -->

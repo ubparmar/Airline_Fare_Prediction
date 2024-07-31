@@ -287,25 +287,7 @@
                   <label for="date-input">Departure Date</label>
                   <input type="date" name="date_of_travel" id="date_of_travel" class="form-control d-block rounded-0" required>
                 </div>
-               {% comment %} <div class="col-md-3">
-                  <label for="totalts">Total Stopover-Time</label>
-                  <input type="text" name="stopover_time" id="stopover_time" class="form-control d-block rounded-0" placeholder="(e.g., 2h 30m)" required>
-                </div>
-                <div class="col-md-3">
-                  <label for="time-slider">Arrival day offset</label>
-                  <input type="number" name="arrival_day_offset" id="arrival_day_offset" class="form-control d-block rounded-0" required>
-                  
-                </div> {% endcomment %}
-                {% comment %} <div class="col-md-6">
-                  <label for="time-slider">Departure Time</label>
-                  <input type="range" min="0" max="24" step="1" value="12" id="time-slider" class="form-range d-block rounded-0 ">
-                  <output for="time-slider" id="selected-time">12:00 PM</output>
-                </div>
-                <div class="col-md-6">
-                  <label for="time-slider">Arrival Time</label>
-                  <input type="range" min="0" max="24" step="1" value="12" id="time-slider2" class="form-range d-block rounded-0">
-                  <output for="time-slider" id="selected-time2">12:00 PM</output>
-                </div> {% endcomment %}
+               
                  <div class="col-md-3">
                   <label for="time-slider">Departure Time</label>
                   <input type="time" name="departure_time" id="departure_time" class="form-control d-block rounded-0" required>
@@ -408,7 +390,12 @@
   
     </div>
     
- 
+    <script type="text/javascript">
+      history.pushState(null, null, location.href);
+      window.onpopstate = function () {
+          history.go(1);
+      };
+  </script>
     <!-- Load jQuery -->
     <script src="{% static 'mainapp/js/jquery-3.3.1.min.js' %}"></script>
     <!-- Load jQuery Migrate -->
