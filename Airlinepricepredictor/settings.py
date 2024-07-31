@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-^cwy323$!t215d(!#vzg573(1_b#u5i8lw42v$*1$mu$2n%!04
 DEBUG = True
 
 #For Productio
-ALLOWED_HOSTS = ['airline-fare-prediction-django.onrender.com' ]
+ALLOWED_HOSTS = ['airline-fare-prediction.onrender.com' ]
 #For Testing
 #ALLOWED_HOSTS = []
 
