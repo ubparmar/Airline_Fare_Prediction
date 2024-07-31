@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction</title>
+    <style>
+        body {
+            margin: 0;
+            background: #020202;
+            cursor: crosshair;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            font-family: Lato, "Trebuchet MS", "Verdana", "sans-serif";
+        }
+
+        canvas {
+            display: block;
+        }
+
+        h1 {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -30%);
+            color: #fff;
+            font-family: "Source Sans Pro";
+            font-size: 4em;
+            font-weight: 900;
+            -webkit-user-select: none;
+            user-select: none;
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        #testbutton {
+            width: 150px;
+            height: 50px;
+            border-radius: 180px;
+            position: absolute;
+            left: calc(50% - 75px);
+            top: calc(50% - -125px);
+            background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+            cursor: pointer;
+            line-height: 12px;
+        }
+
+        #testbutton:before {
+            content: '';
+            z-index: 1;
+            position: absolute;
+            display: block;
+            width: 80%;
+            height: 70%;
+            top: 15%;
+            left: 10%;
+            transition: 0.3s opacity ease-in-out;
+            filter: blur(15px);
+            opacity: 0;
+            background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+        }
+
+        #testbutton:hover:before {
+            opacity: 1;
+            transition: 0.3s opacity ease-in-out;
+            filter: blur(25px);
+        }
+
+        #testbutton:after {
+            content: 'Return Back!';
+            text-align: center;
+            line-height: 40px;
+            font-size: 15px;
+            color: rgba(235, 235, 235, 1);
+            font-weight: bold;
+            z-index: 5;
+            position: absolute;
+            display: block;
+            border-radius: 180px;
+            width: 92%;
+            height: 80%;
+            top: 10%;
+            left: 4%;
+            background-color: rgb(19, 20, 22);
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5em;
+                top: 15%;
+            }
+
+            #testbutton {
+                width: 120px;
+                height: 40px;
+                left: calc(50% - 60px);
+                top: calc(50% - -100px);
+            }
+
+            #testbutton:after {
+                font-size: 12px;
+                line-height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+<h1>Hooray, Your Predicted Price is!! ${{ prediction }} 😁</h1>
+
+<canvas id="birthday"></canvas>
+
+<a href="{% url 'home' %}">
+    <div id="testbutton"></div>
+</a>
+
+<script>
+//01000001 01010011
+// helper functions
+const PI2 = Math.PI * 2;
+const random = (min, max) => Math.random() * (max - min + 1) + min | 0;
+const timestamp = () => new Date().getTime();
+
+// container
+class Birthday {
+    constructor() {
+        this.resize();
+        this.fireworks = [];
+        this.counter = 0;
+    }
+
+    resize() {
+        this.width = canvas.width = window.innerWidth;
+        let center = this.width / 2 | 0;
+        this.spawnA = center - center / 4 | 0;
+        this.spawnB = center + center / 4 | 0;
+        this.height = canvas.height = window.innerHeight;
+        this.spawnC = this.height * .1;
+        this.spawnD = this.height * .5;
+    }
+
+    onClick(evt) {
+        let x = evt.clientX || evt.touches && evt.touches[0].pageX;
+        let y = evt.clientY || evt.touches && evt.touches[0].pageY;
+        let count = random(3, 10);
+        for (let i = 0; i < count; i++) {
+            this.fireworks.push(new Firework(
+                random(this.spawnA, this.spawnB),
+                this.height,
+                x,
+                y,
+                random(0, 260),
+                random(30, 110)
+            ));
+        }
+        this.counter = -1;
+    }
+
+    update(delta) {
+        ctx.globalCompositeOperation = 'hard-light';
+        ctx.fillStyle = `rgba(20,20,20,${7 * delta})`;
+        ctx.fillRect(0, 0, this.width, this.height);
+        ctx.globalCompositeOperation = 'lighter';
+        for (let firework of this.fireworks) firework.update(delta);
+        this.counter += delta * 3;
+        if (this.counter >= 1) {
+            this.fireworks.push(new Firework(
+                random(this.spawnA, this.spawnB),
+                this.height,
+                random(0, this.width),
+                random(this.spawnC, this.spawnD),
+                random(0, 360),
+                random(30, 110)
+            ));
+            this.counter = 0;
+        }
+        if (this.fireworks.length > 1000) this.fireworks = this.fireworks.filter(firework => !firework.dead);
+    }
+}
+
+class Firework {
+    constructor(x, y, targetX, targetY, shade, offsprings) {
+        this.dead = false;
+        this.offsprings = offsprings;
+        this.x = x;
+        this.y = y;
+        this.targetX = targetX;
+        this.targetY = targetY;
+        this.shade = shade;
+        this.history = [];
+    }
+
+    update(delta) {
+        if (this.dead) return;
+        let xDiff = this.targetX - this.x;
+        let yDiff = this.targetY - this.y;
+        if (Math.abs(xDiff) > 3 || Math.abs(yDiff) > 3) {
+            this.x += xDiff * 2 * delta;
+            this.y += yDiff * 2 * delta;
+            this.history.push({
+                x: this.x,
+                y: this.y
+            });
+            if (this.history.length > 20) this.history.shift();
+        } else {
+            if (this.offsprings && !this.madeChilds) {
+                let babies = this.offsprings / 2;
+                for (let i = 0; i < babies; i++) {
+                    let targetX = this.x + this.offsprings * Math.cos(PI2 * i / babies) | 0;
+                    let targetY = this.y + this.offsprings * Math.sin(PI2 * i / babies) | 0;
+                    birthday.fireworks.push(new Firework(this.x, this.y, targetX, targetY, this.shade, 0));
+                }
+            }
+            this.madeChilds = true;
+            this.history.shift();
+        }
+        if (this.history.length === 0) this.dead = true;
+        else if (this.offsprings) {
+            for (let i = 0; this.history.length > i; i++) {
+                let point = this.history[i];
+                ctx.beginPath();
+                ctx.fillStyle = 'hsl(' + this.shade + ',100%,' + i + '%)';
+                ctx.arc(point.x, point.y, 1, 0, PI2, false);
+                ctx.fill();
+            }
+        } else {
+            ctx.beginPath();
+            ctx.fillStyle = 'hsl(' + this.shade + ',100%,50%)';
+            ctx.arc(this.x, this.y, 1, 0, PI2, false);
+            ctx.fill();
+        }
+    }
+}
+
+let canvas = document.getElementById('birthday');
+let ctx = canvas.getContext('2d');
+let then = timestamp();
+let birthday = new Birthday();
+window.onresize = () => birthday.resize();
+document.onclick = evt => birthday.onClick(evt);
+document.ontouchstart = evt => birthday.onClick(evt);
+
+(function loop() {
+    requestAnimationFrame(loop);
+    let now = timestamp();
+    let delta = now - then;
+    then = now;
+    birthday.update(delta / 1000);
+})();
+</script>
+</body>
+</html>

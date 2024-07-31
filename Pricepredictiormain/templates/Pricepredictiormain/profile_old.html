@@ -1,0 +1,29 @@
+<!-- Pricepredictormain/templates/Pricepredictormain/profile.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include any additional meta tags, stylesheets, or scripts here -->
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">User Profile</h2>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Welcome, {{ user.username }}!</h5>
+                <p class="card-text">Email: {{ user.email }}</p>
+                <!-- Add more details or sections as needed -->
+
+                <!-- Logout Button -->
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">Logout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

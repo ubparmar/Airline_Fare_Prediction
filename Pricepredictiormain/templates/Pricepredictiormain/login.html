@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyVista-Login</title>
+    <link rel="stylesheet" href="{% static 'pricepredictorapp/css/regcss/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background:  #ebf5fb ;
+      }
+      .wrapper {
+        position: relative;
+        max-width: 430px;
+        width: 100%;
+        background: #fff;
+        padding: 34px;
+        border-radius: 6px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        margin-top: 80px;
+      }
+      .wrapper h2 {
+        position: relative;
+        font-size: 22px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 20px;
+      }
+      .wrapper h2::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 28px;
+        border-radius: 12px;
+        background: #4070f4;
+      }
+      .wrapper form .input-box {
+        height: 52px;
+        margin: 18px 0;
+      }
+      form .input-box input {
+        height: 100%;
+        width: 100%;
+        outline: none;
+        padding: 0 15px;
+        font-size: 17px;
+        font-weight: 400;
+        color: #333;
+        border: 1.5px solid #C7BEBE;
+        border-bottom-width: 2.5px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+      }
+      .input-box input:focus,
+      .input-box input:valid {
+        border-color: #4070f4;
+      }
+      .input-box.button input {
+        color: #fff;
+        letter-spacing: 1px;
+        border: none;
+        background: #4070f4;
+        cursor: pointer;
+      }
+      .input-box.button input:hover {
+        background: #0e4bf1;
+      }
+      .text h3 {
+        color: #333;
+        width: 100%;
+        text-align: center;
+      }
+      .text h3 a {
+        color: #4070f4;
+        text-decoration: none;
+      }
+      .text h3 a:hover {
+        text-decoration: underline;
+      }
+      .error {
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <a class="navbar-brand" href="#">SkyVista</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="wrapper">
+      <h2>Login Here</h2>
+    
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <div class="input-box">
+          <input type="text" name="username" placeholder="Enter your username" value="{{ form.username.value }}" required>
+          {% if form.username.errors %}
+          <div class="error">{{ form.username.errors }}</div>
+          {% endif %}
+        </div>
+        <div class="input-box">
+          <input type="password" name="password" placeholder="Enter your password" required>
+          {% if form.password.errors %}
+          <div class="error">{{ form.password.errors }}</div>
+          {% endif %}
+        </div>
+        <div class="input-box button">
+          <input type="Submit" value="Login">
+        </div>
+        <div class="text">
+          <h7>Don't have an account? <a href="{% url 'register' %}">Sign Up now</a></h7>
+        </div>
+      </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
