@@ -27,9 +27,9 @@ SECRET_KEY = "django-insecure-^cwy323$!t215d(!#vzg573(1_b#u5i8lw42v$*1$mu$2n%!04
 DEBUG = True
 
 #For Productio
-ALLOWED_HOSTS = ['airline-fare-prediction.onrender.com' ]
+#ALLOWED_HOSTS = ['airline-fare-prediction.onrender.com' ]
 #For Testing
-#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
@@ -51,8 +51,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+    # "django.middleware.security.SecurityMiddleware",
+    # "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = "Airlinepricepredictor.urls"
@@ -138,13 +138,13 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 #For Production server
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+#STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 #For local testing
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static"),
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 #For production Server
-STATIC_ROOT="static"
+#STATIC_ROOT="static"
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
