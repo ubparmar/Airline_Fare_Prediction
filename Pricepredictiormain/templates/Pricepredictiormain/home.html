@@ -334,7 +334,7 @@
                   <input type="range" min="0" max="24" step="1" value="12" id="time-slider2" class="form-range d-block rounded-0">
                   <output for="time-slider" id="selected-time2">12:00 PM</output>
                 </div>  {% endcomment %}
-                 <div class="col-md-2">
+                 {% comment %} <div class="col-md-2">
                   <label for="time-slider">Departure Time</label>
                   <input type="time" name="departure_time" id="departure_time" class="form-control d-block rounded-0" required>
                 
@@ -343,7 +343,7 @@
                   <label for="time-slider">Arrival Time</label>
                   <input type="time" name="arrival_time" id="arrival_time" class="form-control d-block rounded-0" required>
                   
-                </div>
+                </div> {% endcomment %}
                
                 <div class="col-md-2 mt-2">
                   <input type="submit" class="btn btn-success text-white btn-block rounded-0" value="Predict Now 😅">

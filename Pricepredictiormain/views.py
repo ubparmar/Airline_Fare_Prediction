@@ -39,8 +39,8 @@ def predict_price(request):
         travel_class = request.POST.get('travel_class')
         date_of_travel = request.POST.get('date_of_travel')
         stopover_time = request.POST.get('stopover_time')
-        departure_time = request.POST.get('departure_time')
-        arrival_time = request.POST.get('arrival_time')
+       # departure_time = request.POST.get('departure_time')
+       # arrival_time = request.POST.get('arrival_time')
        # arrival_day_offset = request.POST.get('arrival_day_offset')
         #days_left = (datetime.strptime(date_of_travel, "%Y-%m-%d") - datetime.now()).days
 
@@ -57,8 +57,8 @@ def predict_price(request):
                 "Class": travel_class,
                 "Date": date_of_travel,
                 # "Total_Stopover_Time": int(stopover_time),
-                "Departure_24hr": departure_time,
-                "Arrival_24hr": arrival_time,
+               # "Departure_24hr": departure_time,
+               # "Arrival_24hr": arrival_time,
                 #"Arrival_Day_Offset": int(arrival_day_offset),
                 #"days_left": days_left
             }
@@ -72,14 +72,14 @@ def predict_price(request):
                 user_df['Date'] = pd.to_datetime(user_df['Date'])
                 user_df['Month'] = user_df['Date'].dt.month
                 user_df['DayOfWeek'] = user_df['Date'].dt.dayofweek
-                user_df['Departure_Minutes'] = user_df['Departure_24hr'].apply(time_to_minutes)
-                user_df['Arrival_Minutes'] = user_df['Arrival_24hr'].apply(time_to_minutes)
+               # user_df['Departure_Minutes'] = user_df['Departure_24hr'].apply(time_to_minutes)
+               # user_df['Arrival_Minutes'] = user_df['Arrival_24hr'].apply(time_to_minutes)
 
                 for col in ['Airline', 'Source', 'Destination', 'Class']:
                     user_df[col + '_encoded'] = le_dict[col].transform(user_df[col])
 
                 features = ['Number of Stops', 
-                            'Month', 'DayOfWeek', 'Departure_Minutes', 'Arrival_Minutes',
+                            'Month', 'DayOfWeek',
                             'Airline_encoded', 'Source_encoded', 'Destination_encoded', 'Class_encoded']
                 return user_df[features]
 
@@ -146,8 +146,8 @@ def profile(request):
         travel_class = request.POST.get('travel_class')
         date_of_travel = request.POST.get('date_of_travel')
         #stopover_time = request.POST.get('stopover_time')
-        departure_time = request.POST.get('departure_time')
-        arrival_time = request.POST.get('arrival_time')
+       # departure_time = request.POST.get('departure_time')
+       # arrival_time = request.POST.get('arrival_time')
         #arrival_day_offset = request.POST.get('arrival_day_offset')
 
         # Validate source and destination
@@ -173,8 +173,8 @@ def profile(request):
                     "Class": travel_class,
                     "Date": date_of_travel,
                     #"Total_Stopover_Time": int(stopover_time),
-                    "Departure_24hr": departure_time,
-                    "Arrival_24hr": arrival_time,
+                    #"Departure_24hr": departure_time,
+                    #"Arrival_24hr": arrival_time,
                     #"Arrival_Day_Offset": int(arrival_day_offset),
                     #"days_left": days_left
                 }
@@ -188,14 +188,14 @@ def profile(request):
                     user_df['Date'] = pd.to_datetime(user_df['Date'])
                     user_df['Month'] = user_df['Date'].dt.month
                     user_df['DayOfWeek'] = user_df['Date'].dt.dayofweek
-                    user_df['Departure_Minutes'] = user_df['Departure_24hr'].apply(time_to_minutes)
-                    user_df['Arrival_Minutes'] = user_df['Arrival_24hr'].apply(time_to_minutes)
+                   # user_df['Departure_Minutes'] = user_df['Departure_24hr'].apply(time_to_minutes)
+                   # user_df['Arrival_Minutes'] = user_df['Arrival_24hr'].apply(time_to_minutes)
 
                     for col in ['Airline', 'Source', 'Destination', 'Class']:
                         user_df[col + '_encoded'] = le_dict[col].transform(user_df[col])
 
                     features = ['Number of Stops', 
-                                'Month', 'DayOfWeek', 'Departure_Minutes', 'Arrival_Minutes',
+                                'Month', 'DayOfWeek', 
                                 'Airline_encoded', 'Source_encoded', 'Destination_encoded', 'Class_encoded']
                     return user_df[features]
 
@@ -208,8 +208,8 @@ def profile(request):
                 'source': source,
                 'destination': destination,
                 'date_of_travel': date_of_travel,
-                'departure_time': departure_time,
-                'arrival_time': arrival_time,
+               # 'departure_time': departure_time,
+                #'arrival_time': arrival_time,
                 #'stopover_time': stopover_time,
                 'error_message': error_message
             })
