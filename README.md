@@ -28,16 +28,15 @@ Follow these steps to set up the project on your local machine:
    ```sh
    git clone https://github.com/username/repository-name.git
    cd repository-name
-Contributors  | Roles
-------------- | -------------
-Urjeet Parmar  | Deployment/Cloud Engineer
-Mohamed Maaz Rehan  | Content Cell
-Devendra Singh Shekhawat |
-Tirth Patel|
-Swetha Tanikonda|
-Fatemi Sadikbhai Lokhandwala|
-Gaurav Singh Rawat|
-Gaurav Singh|
-Jankiba Viralsinh Zala|
-Comfort Iroha Onuoha|
-Isha Savaliya|
+## Collaborators
+[@tirth-patel01](https://github.com/tirth-patel01)
+[@Swethaloyalist](https://github.com/Swethaloyalist)
+[@Janki-31](https://github.com/Janki-31)
+[@gaurav809](https://github.com/gaurav809)
+[@Comfyonuoha](https://github.com/Comfyonuoha)
+[@DSS7](https://github.com/DSS7)
+[@Fatemi](https://github.com/fatemi-loyalist)
+[@Isha-123456](https://github.com/Isha-123456)
+[@itzgauravvv](https://github.com/itzgauravvv)
+[@Mohamed-Maaz-Rehan](https://github.com/Mohamed-Maaz-Rehan)
+[@Urjeet Parmar](https://github.com/ubparmar)
