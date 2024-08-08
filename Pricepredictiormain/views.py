@@ -120,7 +120,6 @@ def about(request):
     return render(request, 'Pricepredictiormain/about.html',context)
 
 def contact_view(request):
-    success = False
     if request.method == 'POST':
         # Process the form submission
         full_name = request.POST.get('full_name')
@@ -136,11 +135,12 @@ def contact_view(request):
             message=message
         )
 
-        # Set success flag to True
-        success = True
+        # Redirect to the contact page with a success query parameter
+        return redirect('contact')  # Update to your contact URL name
 
     # Fetch all contact responses to display
     contact_responses = Contact.objects.all()
+    success = 'success' in request.GET  # Check if 'success' query parameter is present
     return render(request, 'contact.html', {'contact_responses': contact_responses, 'success': success})
 
     # Fetch all contact responses to display
