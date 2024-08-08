@@ -35,6 +35,9 @@
         <!-- Load Custom Styles -->
         <link rel="stylesheet" href="{% static 'mainapp/css/style.css' %}">
         <link rel="stylesheet" href="{% static 'mainapp/css/card.css' %}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+        
+
         <style>
           /* Example styling for the slider */
           .form-range {
@@ -468,6 +471,19 @@
       </footer>
   
     </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        {% if messages %}
+          {% for message in messages %}
+            Swal.fire({
+              icon: 'success',
+              title: 'Success!',
+              text: '{{ message }}'
+            });
+          {% endfor %}
+        {% endif %}
+      });
+    </script>
     <script type="text/javascript">
       history.pushState(null, null, location.href);
       window.onpopstate = function () {
@@ -501,6 +517,6 @@
 
     <!-- Load Main.js -->
     <script src="{% static 'mainapp/js/main.js' %}"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>

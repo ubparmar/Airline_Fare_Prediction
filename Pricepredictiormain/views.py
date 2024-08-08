@@ -13,7 +13,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 from .forms import ProfileEditForm
 import os
-import pandas as pd
+import pandas as pd 
 
 # Load the saved model and label encoders
 model_path = os.path.join(os.path.dirname(__file__), 'model_files', 'decisiontree_model.joblib')
@@ -123,12 +123,14 @@ def contact(request):
         'user_count': user_count
     }
     return render(request, 'Pricepredictiormain/contact.html',context)
+
 def register(request):
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
+            messages.success(request, 'Account created successfully! Now You May Login')
             return redirect("home")
     else:
         form = CustomUserCreationForm()

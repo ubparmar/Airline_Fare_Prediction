@@ -21,7 +21,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background:  #ebf5fb ;
+        background: #ebf5fb;
       }
       .wrapper {
         position: relative;
@@ -135,7 +135,7 @@
       <form method="post" action="{% url 'register' %}">
         {% csrf_token %}
         <div class="input-box">
-          <input type="text" name="first_name" placeholder="Enter your first name"  required>
+          <input type="text" name="first_name" placeholder="Enter your first name" required>
           {% if form.first_name.errors %}
           <div class="error">{{ form.first_name.errors }}</div>
           {% endif %}
@@ -147,13 +147,13 @@
           {% endif %}
         </div>
         <div class="input-box">
-          <input type="text" name="username" placeholder="Enter your username"  required>
+          <input type="text" name="username" placeholder="Enter your username" required>
           {% if form.username.errors %}
           <div class="error">{{ form.username.errors }}</div>
           {% endif %}
         </div>
         <div class="input-box">
-          <input type="email" name="email" placeholder="Enter your email"  required>
+          <input type="email" name="email" placeholder="Enter your email" required>
           {% if form.email.errors %}
           <div class="error">{{ form.email.errors }}</div>
           {% endif %}
@@ -172,10 +172,10 @@
         </div>
         <div class="policy">
           <input type="checkbox" required>
-          <h3>I accept all terms & condition</h3>
+          <h3>I accept all terms & conditions</h3>
         </div>
         <div class="input-box button">
-          <input type="Submit" value="Register Now">
+          <input type="submit" value="Register Now">
         </div>
         <div class="text">
           <h3>Already have an account? <a href="{% url 'login' %}">Login now</a></h3>
