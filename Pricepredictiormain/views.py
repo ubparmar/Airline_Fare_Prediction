@@ -14,6 +14,8 @@ from django.contrib import messages
 from .forms import ProfileEditForm
 import os
 import pandas as pd 
+from .forms import ContactForm  
+from .models import Contact
 
 # Load the saved model and label encoders
 model_path = os.path.join(os.path.dirname(__file__), 'model_files', 'decisiontree_model.joblib')
@@ -117,13 +119,33 @@ def about(request):
     }
     return render(request, 'Pricepredictiormain/about.html',context)
 
-def contact(request):
-    user_count = User.objects.count()
-    context = {
-        'user_count': user_count
-    }
-    return render(request, 'Pricepredictiormain/contact.html',context)
+def contact_view(request):
+    success = False
+    if request.method == 'POST':
+        # Process the form submission
+        full_name = request.POST.get('full_name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        
+        # Save the contact response to the database
+        Contact.objects.create(
+            full_name=full_name,
+            email=email,
+            subject=subject,
+            message=message
+        )
 
+        # Set success flag to True
+        success = True
+
+    # Fetch all contact responses to display
+    contact_responses = Contact.objects.all()
+    return render(request, 'contact.html', {'contact_responses': contact_responses, 'success': success})
+
+    # Fetch all contact responses to display
+    contact_responses = Contact.objects.all()
+    return render(request, 'contact.html', {'contact_responses': contact_responses})
 def register(request):
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)

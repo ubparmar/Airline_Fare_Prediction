@@ -1,6 +1,7 @@
 # forms.py
 from django import forms
 from django.contrib.auth.models import User
+from django.db import models
 
 class ProfileEditForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput(), required=False)
@@ -28,3 +29,11 @@ class ProfileEditForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+class Contact(models.Model):
+    full_name = models.CharField(max_length=100)
+    email = models.EmailField(blank=True, null=True)  # Email is optional
+    subject = models.CharField(max_length=100)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.full_name

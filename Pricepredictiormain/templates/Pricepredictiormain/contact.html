@@ -73,6 +73,7 @@
         width: 100%;
       }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
   </head>
 
   <body>
@@ -170,7 +171,8 @@
         <div class="container">
           <div class="row">
             <div class="col-md-12 col-lg-8 mb-5">
-              <form action="#" class="p-5 bg-white border">
+              <form action="{% url 'contact' %}" method="post" class="p-5 bg-white border">
+                {% csrf_token %}
                 <div class="row form-group">
                   <div class="col-md-12 mb-3 mb-md-0">
                     <label class="font-weight-bold" for="fullname"
@@ -178,6 +180,7 @@
                     >
                     <input
                       type="text"
+                      name="full_name"
                       id="fullname"
                       class="form-control"
                       placeholder="Full Name"
@@ -190,6 +193,7 @@
                     <input
                       type="email"
                       id="email"
+                      name="email"
                       class="form-control"
                       placeholder="Email Address"
                     />
@@ -203,6 +207,7 @@
                     <input
                       type="text"
                       id="subject"
+                      name="subject"
                       class="form-control"
                       placeholder="Enter Subject"
                     />
@@ -255,7 +260,35 @@
           </div>
         </div>
       </div>
-
+      <div class="site-section">
+        <div class="container">
+          <h3 class="h6 text-black mb-3 text-uppercase">All Responses</h3>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Message</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for response in contact_responses %}
+              <tr>
+                <td>{{ response.full_name }}</td>
+                <td>{{ response.email }}</td>
+                <td>{{ response.subject }}</td>
+                <td>{{ response.message }}</td>
+              </tr>
+              {% empty %}
+              <tr>
+                <td colspan="4">No responses found.</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
       <footer class="site-footer">
         <div class="container">
           <div class="row">
@@ -328,7 +361,20 @@
         </div>
       </footer>
     </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          {% if success %}
+          Swal.fire({
+              title: 'Success!',
+              text: 'Your message has been sent successfully.! Check Responses Below',
+              icon: 'success',
+              confirmButtonText: 'OK'
+          });
+          {% endif %}
+      });
+  </script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Load jQuery -->
     <script src="{% static 'mainapp/js/jquery-3.3.1.min.js' %}"></script>
     <!-- Load jQuery Migrate -->
@@ -353,6 +399,7 @@
     <script src="{% static 'mainapp/js/bootstrap-datepicker.min.js' %}"></script>
     <!-- Load AOS Library -->
     <script src="{% static 'mainapp/js/aos.js' %}"></script>
+
 
     <!-- Load Main.js -->
     <script src="{% static 'mainapp/js/main.js' %}"></script>
