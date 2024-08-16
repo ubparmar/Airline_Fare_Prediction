@@ -9,10 +9,7 @@ Welcome to the Sky Vista Fare Prediction Project! Our mission is to harness the 
 ## Project Website
 
 Visit our project website [here](https://airline-fare-prediction.onrender.com/).
-**Or Copy Link Below**:
-   ```sh
-   https://airline-fare-prediction.onrender.com/
-  
+
 
 ## Project Setup
 
