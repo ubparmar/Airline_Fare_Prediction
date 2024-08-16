@@ -26,7 +26,7 @@ Follow these steps to set up the project on your local machine:
 
 1. **Clone the Repository**:
    ```sh
-   git clone https://github.com/username/repository-name.git
+   git clone https://github.com/ubparmar/Airline_Fare_Prediction.git
    cd repository-name
 ## Collaborators
 [@tirth-patel01](https://github.com/tirth-patel01)
