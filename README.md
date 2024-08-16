@@ -14,7 +14,7 @@ Visit our project website [Click here](https://airline-fare-prediction.onrender.
 
 Check out our project demo video:
 
-[![Sky Vista Fare Prediction Demo](https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg)](https://www.youtube.com/watch?v=V9zUiECHzNE)
+[Watch Sky Vista Fare Prediction Demo on YouTube](https://www.youtube.com/watch?v=V9zUiECHzNE)
 
 ## Project Setup
 
