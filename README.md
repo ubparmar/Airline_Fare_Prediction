@@ -39,7 +39,38 @@ Follow these steps to set up the project on your local machine:
 2. **Run Project**:
    ```sh
    py manage.py runserver
-  
+
+3. **In Order to run the project in localhost**:
+   ```sh
+   Configure settings.py for Local Development:
+   When running the project on localhost, make the following adjustments to the settings.py 
+   Uncomment the below:
+   ALLOWED_HOSTS = []
+   And Remove the below:
+   ALLOWED_HOSTS = ['airline-fare-prediction.onrender.com' ]
+
+4. **Ensure below lines are also uncommented**
+   ```sh
+   STATIC_URL = "static/"
+
+   STATICFILES_DIRS = [
+      os.path.join(BASE_DIR, "static"),
+   ]
+
+5. **Ensure Debug is Set to True**
+   ```sh
+   DEBUG = True
+
+6. **Leave the following commented out**
+-Production ALLOWED_HOSTS
+-WhiteNoise middleware and storage
+-Production STATIC_ROOT setting
+7. **Start the Development Server**
+   ```sh
+   python manage.py runserver
+8. **Access the Application:Open your web browser and navigate to below link**
+   ```sh
+   http://127.0.0.1:8000/
 ## Features
 
 - Accurate prediction of airline fares using advanced machine learning algorithms
