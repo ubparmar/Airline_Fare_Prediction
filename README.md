@@ -55,11 +55,11 @@ Our model is trained on a comprehensive dataset of historical flight prices, whi
 - Duration of flight
 - Total stops
 
-The dataset is not included in this repository due to size constraints. Please contact the project maintainers for access to the training data.
+To download dataset [click here](https://github.com/ubparmar/Airline_Fare_Prediction/tree/main/Data).
 
 ## Model
 
-We use a Random Forest Regressor model, which has shown the best performance for our use case. The model is periodically retrained with updated data to ensure accuracy.
+We use a Decision Tree Regressor model, which has shown the best performance for our use case. The model is periodically retrained with updated data to ensure accuracy.
 
 ## Usage
 
@@ -69,18 +69,6 @@ After setting up the project, you can use the prediction model through our web i
 2. Input your flight details (date, source, destination, etc.)
 3. Click "Predict" to see the estimated fare
 
-For API usage, refer to our API documentation (link to be added).
-
-## Contributing
-
-We welcome contributions to the Sky Vista Fare Prediction Project! Please follow these steps:
-
-1. Fork the repository
-2. Create a new branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
@@ -88,16 +76,9 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 - Thanks to all contributors who have helped shape the Sky Vista Fare Prediction Project
-- Special thanks to [Airline X, Airline Y] for providing additional data resources
-- Inspired by [similar project/paper], [link to be added]
+- Special thanks to [Kayak] for providing additional data resources
+- Inspired by [Kayak], [https://www.ca.kayak.com/]
 
-## Contact
-
-For any queries, please reach out to:
-
-Urjeet Parmar - [@urjeetparmar](https://twitter.com/urjeetparmar) - urjeet.parmar@example.com
-
-Project Link: [https://github.com/ubparmar/Airline_Fare_Prediction](https://github.com/ubparmar/Airline_Fare_Prediction)
 ## Collaborators
 [@tirth-patel01](https://github.com/tirth-patel01)
 [@Swethaloyalist](https://github.com/Swethaloyalist)
