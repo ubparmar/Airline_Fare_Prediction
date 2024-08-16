@@ -32,10 +32,13 @@ Follow these steps to set up the project on your local machine:
 2. **Active Virtual Environment**:
    ```sh
    To activate the virtual environment, use the following command:
-
-   ```bash
    source venv/bin/activate # On macOS/Linux
    .\venv\Scripts\activate # On Windows
+
+2. **Run Project**:
+   ```sh
+   py manage.py runserver
+  
 ## Features
 
 - Accurate prediction of airline fares using advanced machine learning algorithms
