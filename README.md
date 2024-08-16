@@ -8,12 +8,8 @@ Welcome to the Sky Vista Fare Prediction Project! Our mission is to harness the 
 
 ## Project Website
 
-Visit our project website [here](https://airline-fare-prediction.onrender.com/).
+Visit our project website [Click here](https://airline-fare-prediction.onrender.com/).
 
- **Clone the Repository**:
-   ```sh
-   git clone https://github.com/ubparmar/Airline_Fare_Prediction.git
-   cd Airline_Fare_Prediction
 
 ## Project Setup
 
