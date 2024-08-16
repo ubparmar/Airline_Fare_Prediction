@@ -41,7 +41,7 @@ Follow these steps to set up the project on your local machine:
 - Python 3.x
 - Scikit-learn for machine learning models
 - Pandas and NumPy for data manipulation
-- Flask/Django for web application framework
+- Django for web application framework
 - HTML/CSS/JavaScript for frontend
 - Git for version control
 
@@ -71,7 +71,7 @@ After setting up the project, you can use the prediction model through our web i
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/ubparmar/Airline_Fare_Prediction?tab=MIT-1-ov-file) file for details.
 
 ## Acknowledgments
 
