@@ -27,8 +27,15 @@ Follow these steps to set up the project on your local machine:
 1. **Clone the Repository**:
    ```sh
    git clone https://github.com/ubparmar/Airline_Fare_Prediction.git
-   cd repository-name
+   cd Airline_Fare_Prediction
 
+2. **Active Virtual Environment**:
+   ```sh
+   To activate the virtual environment, use the following command:
+
+   ```bash
+   source venv/bin/activate # On macOS/Linux
+   .\venv\Scripts\activate # On Windows
 ## Features
 
 - Accurate prediction of airline fares using advanced machine learning algorithms
@@ -50,7 +57,6 @@ Follow these steps to set up the project on your local machine:
 Our model is trained on a comprehensive dataset of historical flight prices, which includes:
 - Date of journey
 - Source and Destination
-- Route information
 - Airline
 - Duration of flight
 - Total stops
