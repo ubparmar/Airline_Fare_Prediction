@@ -76,7 +76,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "Airlinepricepredictor.wsgi.application"
+WSGI_APPLICATION = 'Airlinepricepredictor.wsgi.application'
 
 
 # Database
