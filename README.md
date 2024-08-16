@@ -10,6 +10,11 @@ Welcome to the Sky Vista Fare Prediction Project! Our mission is to harness the 
 
 Visit our project website [Click here](https://airline-fare-prediction.onrender.com/).
 
+## Project Demo
+
+Check out our project demo video:
+
+[![Sky Vista Fare Prediction Demo](https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg)](https://www.youtube.com/watch?v=V9zUiECHzNE)
 
 ## Project Setup
 
