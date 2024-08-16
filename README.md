@@ -7,7 +7,7 @@
 Welcome to the Sky Vista Fare Prediction Project! Our mission is to harness the power of machine learning to provide accurate fare price predictions, empowering travelers to make informed decisions and optimize their journeys.
 
 ## Project Website
-
+Just wait 1 minute and reload the link it takes time to wakeup the project on render.
 Visit our project website [Click here](https://airline-fare-prediction.onrender.com/).
 
 ## Project Demo
